@@ -1,0 +1,38 @@
+# Конфигурация по умолчанию для системы доставки сообщений
+
+# Настройки логирования
+logging:
+  level: INFO
+  file: logs/message_system.log
+
+# Настройки повторных попыток
+retry:
+  max_retries: 3
+  delay: 2
+
+# Настройки Email
+email:
+  smtp_server: smtp.gmail.com
+  port: 587
+  username: ${EMAIL_USERNAME}
+  password: ${EMAIL_PASSWORD}
+  use_tls: true
+  timeout: 30
+
+# Настройки SMS (Yandex Cloud)
+sms:
+  api_key: ${YANDEX_API_KEY}
+  folder_id: ${YANDEX_FOLDER_ID}
+  sender_id: ${YANDEX_SENDER_ID}
+  base_url: "https://api.cloud.yandex.net/notification/v1"
+
+# Настройки Telegram
+telegram:
+  bot_token: ${TELEGRAM_BOT_TOKEN}
+  timeout: 30
+
+# Настройки Celery
+celery:
+  broker_url: "redis://localhost:6379/0"
+  result_backend: "redis://localhost:6379/0"
+  timezone: "Europe/Moscow"
